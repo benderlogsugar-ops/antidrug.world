@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Anti-Drug World Federation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Anti-Drug World Federation – global sports-based anti-drug initiative." />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      color: #123047;
+      background-color: #f5f8fb;
+    }
+    a { color: #0a6ad8; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    header {
+      background: #0a6ad8;
+      color: #fff;
+      padding: 14px 18px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .logo-title {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .logo-title span:first-child {
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+    .logo-title span:last-child {
+      font-size: 11px;
+      opacity: 0.9;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 14px;
+      font-size: 14px;
+      align-items: center;
+    }
+    nav a {
+      color: #e5efff;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .lang-switch a {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.6);
+      font-size: 11px;
+    }
+    .lang-switch a.active {
+      background: #fff;
+      color: #0a6ad8;
+      font-weight: 600;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 22px 18px 48px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+      gap: 24px;
+      padding: 26px 22px;
+      background: linear-gradient(135deg, #0a6ad8 0%, #143f73 45%, #ffffff 46%, #ffffff 100%);
+      border-radius: 18px;
+      color: #fff;
+      margin-top: 8px;
+      box-shadow: 0 14px 35px rgba(0,0,0,0.12);
+    }
+    .hero h1 {
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      font-size: 14px;
+      max-width: 520px;
+      margin-bottom: 14px;
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .hero-tags span {
+      font-size: 11px;
+      border-radius: 999px;
+      padding: 4px 10px;
+      border: 1px solid rgba(255,255,255,0.7);
+      background: rgba(5,40,90,0.35);
+    }
+    .hero-box {
+      background: rgba(255,255,255,0.94);
+      color: #143f73;
+      border-radius: 14px;
+      padding: 16px 16px 14px;
+      font-size: 13px;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.14);
+    }
+    .hero-box h2 {
+      font-size: 15px;
+      margin-bottom: 8px;
+      color: #0a6ad8;
+    }
+    .hero-box p {
+      margin-bottom: 6px;
+    }
+    .hero-box strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 13px;
+    }
+
+    section {
+      margin-top: 32px;
+    }
+    section h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #0b4076;
+      border-left: 4px solid #0a6ad8;
+      padding-left: 8px;
+    }
+    section p {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0,1.4fr) minmax(0,1.3fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      padding: 16px 18px;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.06);
+      border: 1px solid #dde7f5;
+    }
+    .card h3 {
+      font-size: 16px;
+      margin-bottom: 6px;
+      color: #0b4076;
+    }
+    .card p {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+      gap: 18px;
+      margin-top: 12px;
+    }
+    .leader-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 16px 16px 14px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.06);
+      border: 1px solid #dde7f5;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .leader-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .leader-photo {
+      width: 60px;
+      height: 60px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 20%, #ffffff 0, #c5e0ff 40%, #0a6ad8 100%);
+      overflow: hidden;
+      flex-shrink: 0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size: 26px;
+      font-weight: 700;
+      color: #0a3b70;
+    }
+    .leader-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .leader-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .leader-name {
+      font-weight: 700;
+      font-size: 15px;
+    }
+    .leader-role {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #0a6ad8;
+    }
+    .leader-card p {
+      font-size: 13px;
+    }
+
+    .bank-box {
+      background: #0a6ad8;
+      color: #fff;
+      border-radius: 16px;
+      padding: 18px 18px 16px;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+      font-size: 14px;
+    }
+    .bank-box h3 {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    .bank-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+      gap: 14px;
+      margin-top: 8px;
+    }
+    .bank-col {
+      border-radius: 10px;
+      background: rgba(0,0,0,0.12);
+      padding: 8px 10px;
+      font-size: 13px;
+    }
+    .bank-col strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+    .bank-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      opacity: 0.9;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0,1.1fr) minmax(0,1.1fr);
+      gap: 20px;
+    }
+    .contact-item p {
+      font-size: 14px;
+    }
+    .contact-item strong {
+      display: inline-block;
+      min-width: 90px;
+    }
+
+    footer {
+      background: #0b4076;
+      color: #d2e2ff;
+      font-size: 12px;
+      margin-top: 32px;
+    }
+    footer .inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 12px 18px 14px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    @media (max-width: 800px) {
+      .hero {
+        grid-template-columns: minmax(0,1fr);
+      }
+      .grid-2, .bank-grid, .contact-grid {
+        grid-template-columns: minmax(0,1fr);
+      }
+      nav ul { gap: 10px; font-size: 13px; }
+      .topbar { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="topbar">
+      <div class="logo-title">
+        <span>Anti-Drug World Federation</span>
+        <span>Global sport-based anti-drug initiative</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#mission">Mission</a></li>
+          <li><a href="#programs">Programs</a></li>
+          <li><a href="#leadership">Leadership</a></li>
+          <li><a href="#support">Support</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li class="lang-switch">
+            <a href="index-hu.html">HU</a>
+            <a href="index.html" class="active">EN</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1>Sport against drugs – building a safer future for youth</h1>
+        <p>
+          The Anti-Drug World Federation connects sports clubs, NGOs and communities worldwide
+          to protect young people from drugs through the power of sport, positive examples and
+          real opportunities.
+        </p>
+        <p>
+          We believe that every training, every supportive word and every community experience
+          can be a turning point in a young person’s life.
+        </p>
+        <div class="hero-tags">
+          <span>Drug prevention</span>
+          <span>Youth protection</span>
+          <span>Sport-based reintegration</span>
+          <span>Global cooperation</span>
+        </div>
+      </div>
+      <div class="hero-box">
+        <h2>Support our work</h2>
+        <p>
+          With your support we can reach more young people, launch new prevention programs and
+          strengthen international cooperation.
+        </p>
+        <p>
+          <strong>Official e-mail:</strong>
+          <a href="mailto:office@antidrug.world">office@antidrug.world</a>
+        </p>
+        <p>
+          <strong>Bank details (MBH Bank):</strong>
+          See the detailed HUF and USD accounts in the <a href="#support">Support section</a> below.
+        </p>
+      </div>
+    </section>
+
+    <!-- MISSION & PROGRAMS -->
+    <section id="mission">
+      <h2>Our mission</h2>
+      <div class="grid-2">
+        <div>
+          <p>
+            The Anti-Drug World Federation is an umbrella organization bringing together
+            sports clubs, associations and civil initiatives that use sport as a tool
+            for drug prevention, motivation and community building.
+          </p>
+          <p>
+            Our goal is to offer real alternatives to young people: meaningful activities,
+            supportive communities and strong role models instead of destructive substances.
+          </p>
+          <p>
+            We work to ensure that every country and every city has sports clubs that
+            young people can turn to when they want change, support or a new start.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Key focus areas</h3>
+          <p>• Youth drug prevention through sport</p>
+          <p>• Support for vulnerable and at-risk groups</p>
+          <p>• Sport-based social reintegration</p>
+          <p>• International cooperation between clubs and NGOs</p>
+          <p>• Awareness campaigns and educational programs</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="programs">
+      <h2>Programs and international network</h2>
+      <div class="card">
+        <p>
+          We build an international network of sports clubs and NGOs that accept young
+          people into training if they show commitment to change and a drug-free life.
+        </p>
+        <p>
+          Our long-term vision is that in every country there will be partner clubs where
+          young people can join training sessions simply by presenting a supporting token or
+          reference – as a sign of their decision to step away from drugs and towards sport.
+        </p>
+        <p>
+          The Federation coordinates joint campaigns, training programs, seminars and
+          awareness events, and supports national partners in developing their own local
+          prevention projects.
+        </p>
+      </div>
+    </section>
+
+    <!-- LEADERSHIP -->
+    <section id="leadership">
+      <h2>Leadership</h2>
+      <div class="leadership-grid">
+        <!-- Attila -->
+        <article class="leader-card">
+          <div class="leader-head">
+            <div class="leader-photo">
+  <img src="attila.png" alt="Attila Tóth – President">
+
+              A
+            </div>
+            <div class="leader-meta">
+              <div class="leader-name">Attila Tóth</div>
+              <div class="leader-role">President</div>
+            </div>
+          </div>
+          <p>
+            Attila Tóth is a committed advocate of sport-based drug prevention and
+            community development. He has decades of experience supporting and motivating
+            young people, helping them grow through the transformative power of sport.
+          </p>
+          <p>
+            His work is defined by strong social responsibility, dedication to youth
+            protection and a clear mission to strengthen communities. As President of the
+            Anti-Drug World Federation, his goal is to build an international cooperation
+            network that uses sport to protect young people, promote positive lifestyles
+            and reinforce community values.
+          </p>
+        </article>
+
+        <!-- Tamás -->
+        <article class="leader-card">
+          <div class="leader-head">
+            <div class="leader-photo">T</div>
+            <div class="leader-meta">
+              <div class="leader-name">Tamás Zsolt Napholcz</div>
+              <div class="leader-role">Deputy President</div>
+            </div>
+          </div>
+          <p>
+            Tamás Zsolt Napholcz has more than 20 years of experience in community and
+            sport-driven social programs. He is responsible for operational leadership,
+            strengthening international cooperation and coordinating youth-focused
+            prevention initiatives.
+          </p>
+          <p>
+            His work is characterized by dedication, professionalism and a strong
+            commitment to social responsibility.
+          </p>
+        </article>
+
+        <!-- Gyula -->
+        <article class="leader-card">
+          <div class="leader-head">
+            <div class="leader-photo">G</div>
+            <div class="leader-meta">
+              <div class="leader-name">Gyula Gál</div>
+              <div class="leader-role">Secretary General</div>
+            </div>
+          </div>
+          <p>
+            Gyula Gál is a key figure of the organization, known for initiating
+            several reintegration-focused sport programs to support successful returns
+            to society.
+          </p>
+          <p>
+            He has extensive experience in sports education, social development and
+            rehabilitation. As Secretary General, he is responsible for organizational
+            management, international documentation and the professional coordination of
+            development projects.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- SUPPORT / BANK -->
+    <section id="support">
+      <h2>Support the Federation</h2>
+      <div class="bank-box">
+        <h3>Support our work through MBH Bank transfers</h3>
+        <p>
+          Donations can be accounted as support for a non-profit organisation.
+          For detailed tax advice, please consult your accountant or legal advisor.
+        </p>
+        <div class="bank-grid">
+          <div class="bank-col">
+            <div class="bank-label">HUF account</div>
+            <strong>IBAN:</strong>
+            <div>HU31 1030 0002 1587 2478 0001 4900</div>
+            <strong>Bank:</strong>
+            <div>MBH Bank Nyrt.</div>
+            <strong>BIC / SWIFT:</strong>
+            <div>MKKBHUHB</div>
+          </div>
+          <div class="bank-col">
+            <div class="bank-label">USD account</div>
+            <strong>IBAN:</strong>
+            <div>HU05 1030 0002 1587 2478 0001 4010</div>
+            <strong>Bank:</strong>
+            <div>MBH Bank Nyrt.</div>
+            <strong>BIC / SWIFT:</strong>
+            <div>MKKBHUHB</div>
+          </div>
+        </div>
+        <p style="margin-top:10px;font-size:12px;opacity:0.9;">
+          Please always indicate in the transfer comment: “Donation – Anti-Drug World Federation”.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <p><strong>Organisation:</strong> Anti-Drug World Federation</p>
+          <p><strong>E-mail:</strong> <a href="mailto:office@antidrug.world">office@antidrug.world</a></p>
+        </div>
+        <div class="contact-item">
+          <p>
+            For partnership offers, embassy relations, international cooperation,
+            ambassadors and sponsors, please write to our official e-mail address.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="inner">
+      <div>© Anti-Drug World Federation – All rights reserved.</div>
+      <div>Global sport-based anti-drug initiative</div>
+    </div>
+  </footer>
+<hr>
+<section id="legal">
+  <h3>Legal Information</h3>
+  <p>
+    <strong>Organization name:</strong> AntiDrugWorldFederation<br>
+    <strong>Legal form:</strong> Nonprofit organization<br>
+    <strong>Country of registration:</strong> Hungary<br><br>
+
+    <strong>Mission:</strong><br>
+    AntiDrugWorldFederation is dedicated to drug prevention and youth protection
+    through sport, education and community-based programs.<br><br>
+
+    <strong>Legal representative and President:</strong><br>
+    Attila Tóth<br><br>
+
+    <strong>Official website:</strong><br>
+    https://antidrug.world<br><br>
+
+    <strong>Official contact email:</strong><br>
+    office@antidrug.world
+  </p>
+</section>
+
+</body>
+</html>
